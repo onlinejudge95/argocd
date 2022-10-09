@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools==65.4.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "argopy"
+version = "0.0.1"
+authors = [
+    { name = "Mayank Pathak", email = "onlinejudge95@gmail.com"}
+]
+description = "Python client for ArgoCD"
+readme = "README.md"
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Environment :: Other Environment",
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed"
+]
+[project.urls]
+"Homepage" = "https://github.com/onlinejudge95/argopy"
+"Bug Tracker" = "https://github.com/onlinejudge95/argopy/issues"

@@ -1,0 +1,4 @@
+.vscode/
+env/
+argopy.egg-info/
+dist/
