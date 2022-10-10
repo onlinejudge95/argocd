@@ -1,6 +1,6 @@
 from requests import sessions
 
-from argopy import config
+from argocd import config
 
 
 class VersionService:
