@@ -26,7 +26,7 @@ def test_version_api_returns_ok(version_service):
 
 @unittest.mock.patch(
     "argocd.services.version.sessions.Session.get",
-    mocks.mocked_failure_version_response,
+    mocks.mocked_failure_generic_response,
 )
 def test_version_api_returns_non_ok(version_service):
     response = version_service.get_server_version()

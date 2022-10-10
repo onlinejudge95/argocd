@@ -3,7 +3,7 @@ import unittest.mock
 
 import pytest
 
-from argopy.services import settings
+from argocd.services import settings
 from tests.services import mocks
 
 
@@ -14,7 +14,7 @@ def settings_service():
 
 
 @unittest.mock.patch(
-    "argopy.services.settings.sessions.Session.get",
+    "argocd.services.settings.sessions.Session.get",
     mocks.mocked_success_settings_response,
 )
 def test_settings_api_returns_ok(settings_service):
@@ -25,7 +25,7 @@ def test_settings_api_returns_ok(settings_service):
 
 
 @unittest.mock.patch(
-    "argopy.services.settings.sessions.Session.get",
+    "argocd.services.settings.sessions.Session.get",
     mocks.mocked_failure_generic_response,
 )
 def test_settings_api_returns_non_ok(settings_service):
