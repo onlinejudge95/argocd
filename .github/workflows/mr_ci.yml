@@ -30,6 +30,3 @@ jobs:
     - name: Coverage with pytest
       run: |
         pytest --no-cov-on-fail --cov argocd --cov-report html --cov-report term --cov-report xml tests
-    - name: Build package
-      run: |
-        python -m build
