@@ -2,3 +2,8 @@
 env/
 argopy.egg-info/
 dist/
+__pycache__/
+htmlcov/
+.coverage
+coverage.xml
+.pytest_cache/

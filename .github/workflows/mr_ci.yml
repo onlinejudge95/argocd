@@ -26,10 +26,10 @@ jobs:
       run: |
         black --check --target-version py310 .
         isort --check --profile black --skip env .
-        flake8 --count --show-source --statistics --exclude .git,env,__init__.py --ignore E226,E302,E41,E702,E731,E231,W503 --max-line-length 88 .
+        flake8 --count --show-source --statistics --exclude .git,env,__init__.py --max-line-length 88 .
     - name: Coverage with pytest
       run: |
-        pytest --cov-branch --no-cov-on-fail --cov="argopy" --cov-report="html:htmlcov" --cov-report="term" --cov-report="xml:coverage/xml" tests
+        pytest --no-cov-on-fail --cov="argopy" --cov-report html --cov-report term --cov-report="xml:coverage/xml" tests
     - name: Build package
       run: |
         python -m build
