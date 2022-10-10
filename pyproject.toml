@@ -4,11 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
 packages = [
-    "argopy"
+    "argocd"
 ]
 
 [project]
-name = "argopy"
+name = "argocd"
 version = "0.1.0"
 authors = [
     { name = "Mayank Pathak", email = "onlinejudge95@gmail.com"}

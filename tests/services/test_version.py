@@ -3,7 +3,7 @@ import unittest.mock
 
 import pytest
 
-from argopy.services import version
+from argocd.services import version
 from tests.services import mocks
 
 
@@ -14,7 +14,7 @@ def version_service():
 
 
 @unittest.mock.patch(
-    "argopy.services.version.sessions.Session.get",
+    "argocd.services.version.sessions.Session.get",
     mocks.mocked_success_version_response,
 )
 def test_version_api_returns_ok(version_service):
@@ -25,7 +25,7 @@ def test_version_api_returns_ok(version_service):
 
 
 @unittest.mock.patch(
-    "argopy.services.version.sessions.Session.get",
+    "argocd.services.version.sessions.Session.get",
     mocks.mocked_failure_version_response,
 )
 def test_version_api_returns_non_ok(version_service):
