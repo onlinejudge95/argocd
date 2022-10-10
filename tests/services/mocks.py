@@ -1,3 +1,16 @@
+def mocked_failure_generic_response(*args, **kwargs):
+    class DummyClass:
+        def json(self):
+            return {
+                "code": "1",
+                "details": [{"type_url": "http://demo.com", "value": "value"}],
+                "error": "Error",
+                "message": "Error Message",
+            }
+
+    return DummyClass()
+
+
 def mocked_success_version_response(*args, **kwargs):
     class DummyClass:
         def json(self):
@@ -18,14 +31,29 @@ def mocked_success_version_response(*args, **kwargs):
     return DummyClass()
 
 
-def mocked_failure_version_response(*args, **kwargs):
+def mocked_success_settings_response(*args, **kwargs):
     class DummyClass:
         def json(self):
             return {
-                "code": "1",
-                "details": [{"type_url": "http://demo.com", "value": "value"}],
-                "error": "Error",
-                "message": "Error Message",
+                "url": "https://cd.apps.argoproj.io",
+                "dexConfig": {"connectors": [{"name": "GitHub", "type": "github"}]},
+                "appLabelKey": "app.kubernetes.io/instance",
+                "resourceOverrides": {
+                    "apiextensions.k8s.io/CustomResourceDefinition": {
+                        "ignoreDifferences": "jqPathExpressions: null\njsonPointers:\n- /status\n- /spec/preserveUnknownFields\nmanagedFieldsManagers: null\n"  # noqa: E501
+                    }
+                },
+                "statusBadgeEnabled": "true",
+                "googleAnalytics": {
+                    "trackingID": "UA-123456789-0",
+                    "anonymizeUsers": "true",
+                },
+                "kustomizeOptions": {"BuildOptions": "", "BinaryPath": ""},
+                "help": {"chatText": "Chat now!"},
+                "plugins": [{"name": "flux"}],
+                "userLoginsDisabled": "true",
+                "passwordPattern": "^.{8,32}$",
+                "trackingMethod": "annotation",
             }
 
     return DummyClass()
