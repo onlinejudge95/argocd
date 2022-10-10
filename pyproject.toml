@@ -9,7 +9,7 @@ packages = [
 
 [project]
 name = "argopy"
-version = "0.0.1"
+version = "0.1.0"
 authors = [
     { name = "Mayank Pathak", email = "onlinejudge95@gmail.com"}
 ]
@@ -32,7 +32,8 @@ classifiers = [
 [tool.coverage.run]
 branch = true
 omit = [
-    "*/__init__.py"
+    "*/__init__.py",
+    "*/config.py"
 ]
 [tool.coverage.report]
 fail_under = 95.00
