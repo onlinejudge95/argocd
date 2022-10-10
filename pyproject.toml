@@ -9,7 +9,7 @@ packages = [
 
 [project]
 name = "argocd"
-version = "0.1.1"
+version = "0.2.0"
 authors = [
     { name = "Mayank Pathak", email = "onlinejudge95@gmail.com"}
 ]
