@@ -7,7 +7,7 @@ on:
       - completed
 
 jobs:
-  deploy-test-repository:
+  deploy-prod-repository:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
