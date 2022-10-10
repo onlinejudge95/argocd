@@ -1,6 +1,6 @@
 .vscode/
 env/
-argopy.egg-info/
+argocd.egg-info/
 dist/
 __pycache__/
 htmlcov/
