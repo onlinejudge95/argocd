@@ -2,6 +2,11 @@
 requires = ["setuptools==65.4.1"]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools]
+packages = [
+    "argopy"
+]
+
 [project]
 name = "argopy"
 version = "0.0.1"
@@ -23,3 +28,17 @@ classifiers = [
 [project.urls]
 "Homepage" = "https://github.com/onlinejudge95/argopy"
 "Bug Tracker" = "https://github.com/onlinejudge95/argopy/issues"
+
+[tool.coverage.run]
+branch = true
+omit = [
+    "*/__init__.py"
+]
+[tool.coverage.report]
+fail_under = 95.00
+precision = 2
+show_missing = true
+[tool.coverage.html]
+directory = "htmlcov"
+[tool.coverage.xml]
+output = "coverage.xml"

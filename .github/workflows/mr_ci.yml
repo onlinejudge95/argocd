@@ -1,0 +1,35 @@
+name: ArgoPy CI
+
+on:
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10"]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install --requirement requirements.txt
+        pip install --requirement requirements-test.txt
+    - name: Lint Step
+      run: |
+        black --check --target-version py310 .
+        isort --check --profile black --skip env .
+        flake8 --count --show-source --statistics --exclude .git,env,__init__.py --max-line-length 88 .
+    - name: Coverage with pytest
+      run: |
+        pytest --no-cov-on-fail --cov="argopy" --cov-report html --cov-report term --cov-report="xml:coverage/xml" tests
+    - name: Build package
+      run: |
+        python -m build
