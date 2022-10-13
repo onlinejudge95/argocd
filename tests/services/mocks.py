@@ -57,3 +57,24 @@ def mocked_success_settings_response(*args, **kwargs):
             }
 
     return DummyClass()
+
+
+def mocked_success_session_me_response(*args, **kwargs):
+    class DummyClass:
+        def json(self):
+            return {
+                "loggedIn": True,
+                "username": "user@example.com",
+                "iss": "https://cd.apps.argoproj.io/api/dex",
+                "groups": ["groups@example.com"],
+            }
+
+    return DummyClass()
+
+
+def mocked_success_session_create_and_delete_session_response(*args, **kwargs):
+    class DummyClass:
+        def json(self):
+            return {"token": "secure_token"}
+
+    return DummyClass()
