@@ -1,13 +1,9 @@
 name: Production CD
 
-on:
-  workflow_run:
-    workflows: [Test CD]
-    types:
-      - completed
+on: workflow_dispatch
 
 jobs:
-  deploy-test-repository:
+  deploy-prod-repository:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3

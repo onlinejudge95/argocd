@@ -1,5 +1,6 @@
 .vscode/
-env/
+build_env/
+test_env/
 argocd.egg-info/
 dist/
 __pycache__/
