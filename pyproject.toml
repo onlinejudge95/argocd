@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools]
 packages = [
     "argocd",
-    "argocd/services"
+    "argocd.services"
 ]
 
 [project]
