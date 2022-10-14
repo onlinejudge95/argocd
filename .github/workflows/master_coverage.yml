@@ -1,7 +1,7 @@
 name: ArgoPy CI
 
 on:
-  pull_request:
+  push:
     branches: [ "master" ]
 
 jobs:
@@ -31,11 +31,6 @@ jobs:
         gpgv codecov.SHA256SUM.sig codecov.SHA256SUM
         shasum -a 256 -c codecov.SHA256SUM
         chmod +x codecov
-    - name: Lint Step
-      run: |
-        black --check --target-version py310 .
-        isort --check --profile black --skip env .
-        flake8 --count --show-source --statistics --exclude .git,env,__init__.py --max-line-length 88 .
     - name: Coverage with pytest
       run: |
         pytest --no-cov-on-fail --cov argocd --cov-report html --cov-report term --cov-report xml tests
