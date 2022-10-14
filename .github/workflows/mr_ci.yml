@@ -29,4 +29,13 @@ jobs:
         flake8 --count --show-source --statistics --exclude .git,env,__init__.py --max-line-length 88 .
     - name: Coverage with pytest
       run: |
+        curl https://uploader.codecov.io/verification.gpg | gpg --no-default-keyring --keyring trustedkeys.gpg --import
+        curl -Os https://uploader.codecov.io/latest/linux/codecov
+        curl -Os https://uploader.codecov.io/latest/linux/codecov.SHA256SUM
+        curl -Os https://uploader.codecov.io/latest/linux/codecov.SHA256SUM.sig
+        gpgv codecov.SHA256SUM.sig codecov.SHA256SUM
+        shasum -a 256 -c codecov.SHA256SUM
+        chmod +x codecov
+
         pytest --no-cov-on-fail --cov argocd --cov-report html --cov-report term --cov-report xml tests
+        ./codecov -t ${CODECOV_TOKEN}
