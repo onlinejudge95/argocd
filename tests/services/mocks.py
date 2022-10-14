@@ -57,3 +57,25 @@ def mocked_success_settings_response(*args, **kwargs):
             }
 
     return DummyClass()
+
+
+def mocked_success_repository_list_response(*args, **kwargs):
+    class DummyClass:
+        def json(self):
+            return {
+                "metadata": {},
+                "items": [
+                    {
+                        "repo": "https://github.com/user/repo",
+                        "username": "user@example.com",
+                        "connectionState": {
+                            "status": "Successful",
+                            "message": "",
+                            "attemptedAt": "2022-10-14T05:01:04Z",
+                        },
+                        "type": "git",
+                    }
+                ],
+            }
+
+    return DummyClass()
