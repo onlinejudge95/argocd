@@ -57,3 +57,129 @@ def mocked_success_settings_response(*args, **kwargs):
             }
 
     return DummyClass()
+
+
+def mocked_success_repository_list_response(*args, **kwargs):
+    class DummyClass:
+        def json(self):
+            return {
+                "metadata": {},
+                "items": [
+                    {
+                        "repo": "https://github.com/user/repo",
+                        "username": "user@example.com",
+                        "connectionState": {
+                            "status": "Successful",
+                            "message": "",
+                            "attemptedAt": "2022-10-14T05:01:04Z",
+                        },
+                        "type": "git",
+                    }
+                ],
+            }
+
+    return DummyClass()
+
+
+def mocked_success_repository_create_response(*args, **kwargs):
+    class DummyClass:
+        def json(self):
+            return {
+                "connectionState": {
+                    "attemptedAt": {"nanos": 0, "seconds": "string"},
+                    "message": "string",
+                    "status": "string",
+                },
+                "enableLfs": True,
+                "enableOCI": True,
+                "githubAppEnterpriseBaseUrl": "string",
+                "githubAppID": "string",
+                "githubAppInstallationID": "string",
+                "githubAppPrivateKey": "string",
+                "inheritedCreds": True,
+                "insecure": True,
+                "insecureIgnoreHostKey": True,
+                "name": "string",
+                "password": "string",
+                "project": "string",
+                "proxy": "string",
+                "repo": "string",
+                "sshPrivateKey": "string",
+                "tlsClientCertData": "string",
+                "tlsClientCertKey": "string",
+                "type": "string",
+                "username": "string",
+            }
+
+    return DummyClass()
+
+
+def mocked_success_repository_delete_response(*args, **kwargs):
+    class DummyClass:
+        def json(self):
+            return dict()
+
+    return DummyClass()
+
+
+def mocked_success_repository_list_apps_response(*args, **kwargs):
+    class DummyClass:
+        def json(self):
+            return {"items": [{"path": "string", "type": "string"}]}
+
+    return DummyClass()
+
+
+def mocked_success_repository_list_charts_response(*args, **kwargs):
+    class DummyClass:
+        def json(self):
+            return {"items": [{"name": "string", "versions": ["string"]}]}
+
+    return DummyClass()
+
+
+def mocked_success_repository_list_refs_response(*args, **kwargs):
+    class DummyClass:
+        def json(self):
+            return {"branches": ["string"], "tags": ["string"]}
+
+    return DummyClass()
+
+
+def mocked_success_repository_get_app_response(*args, **kwargs):
+    class DummyClass:
+        def json(self):
+            return {
+                "directory": {},
+                "helm": {
+                    "fileParameters": [{"name": "string", "path": "string"}],
+                    "name": "string",
+                    "parameters": [
+                        {"forceString": True, "name": "string", "value": "string"}
+                    ],
+                    "valueFiles": ["string"],
+                    "values": "string",
+                },
+                "ksonnet": {
+                    "environments": {
+                        "property1": {
+                            "destination": {"namespace": "string", "server": "string"},
+                            "k8sVersion": "string",
+                            "name": "string",
+                        },
+                        "property2": {
+                            "destination": {"namespace": "string", "server": "string"},
+                            "k8sVersion": "string",
+                            "name": "string",
+                        },
+                    },
+                    "name": "string",
+                    "parameters": [
+                        {"component": "string", "name": "string", "value": "string"}
+                    ],
+                },
+                "kustomize": {"images": ["string"]},
+                "type": "string",
+            }
+
+    return DummyClass()

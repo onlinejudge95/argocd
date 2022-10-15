@@ -1,4 +1,4 @@
-name: ArgoPy CI
+name: Master Coverage CI
 
 on:
   push:
