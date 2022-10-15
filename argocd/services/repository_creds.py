@@ -45,3 +45,11 @@ class RepositoryCredsService:
             f"{self.base_url}/api/v1/repocreds/{creds}", json=payload
         )
         return response.json()
+
+    def delete(self, creds):
+        """
+        DeleteRepositoryCredentials deletes a repository credential set
+        from the configuration
+        """
+        response = self.session.delete(f"{self.base_url}/api/v1/repocreds/{creds}")
+        return response.json()

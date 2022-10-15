@@ -150,3 +150,24 @@ def test_repository_api_update_returns_non_ok(
 
     assert isinstance(response, dict)
     assert "error" in response.keys()
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.delete",
+    mocks.mocked_success_repository_delete_response,
+)
+def test_repository_api_delete_returns_ok(repository_creds_service):
+    response = repository_creds_service.delete("dummy_creds")
+
+    assert isinstance(response, dict)
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.delete",
+    mocks.mocked_failure_generic_response,
+)
+def test_repository_api_delete_returns_non_ok(repository_creds_service):
+    response = repository_creds_service.delete("dummy_creds")
+
+    assert isinstance(response, dict)
+    assert "error" in response.keys()
