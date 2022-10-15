@@ -235,3 +235,11 @@ def mocked_success_repository_creds_create_response(*args, **kwargs):
             }
 
     return DummyClass()
+
+
+def mocked_success_repository_creds_update_response(*args, **kwargs):
+    class DummyClass:
+        def json(self):
+            return
+
+    return DummyClass()

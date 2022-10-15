@@ -26,8 +26,7 @@ class RepositoryCredsService:
 
     def create(self, payload, upsert=False):
         """
-        ListRepositoryCredentials gets a list of all configured
-        repository credential sets
+        CreateRepositoryCredentials creates a new repository credential set
         """
         params = {}
         if upsert:
@@ -35,5 +34,14 @@ class RepositoryCredsService:
 
         response = self.session.post(
             f"{self.base_url}/api/v1/repocreds", params=params, json=payload
+        )
+        return response.json()
+
+    def update(self, creds, payload):
+        """
+        UpdateRepositoryCredentials updates a repository credential set
+        """
+        response = self.session.put(
+            f"{self.base_url}/api/v1/repocreds/{creds}", json=payload
         )
         return response.json()
