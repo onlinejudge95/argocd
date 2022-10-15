@@ -28,3 +28,16 @@ class CertificateService:
             f"{self.base_url}/api/v1/certificates", params=params
         )
         return response.json()
+
+    def create(self, payload, upsert=False):
+        """
+        Creates repository certificates on the server
+        """
+        params = {}
+        if upsert:
+            params["upsert"] = upsert
+
+        response = self.session.post(
+            f"{self.base_url}/api/v1/certificates", params=params, json=payload
+        )
+        return response.json()

@@ -15,9 +15,30 @@ def certificate_service():
     return certificate.CertificateService()
 
 
+@pytest.fixture
+def certificate_service_create_payload():
+    return {
+        "items": [
+            {
+                "certData": "string",
+                "certInfo": "string",
+                "certSubType": "string",
+                "certType": "string",
+                "serverName": "string",
+            }
+        ],
+        "metadata": {
+            "continue": "string",
+            "remainingItemCount": "string",
+            "resourceVersion": "string",
+            "selfLink": "string",
+        },
+    }
+
+
 @unittest.mock.patch(
     "argocd.services.repository.sessions.Session.get",
-    mocks.mocked_success_repository_creds_list_response,
+    mocks.mocked_success_certificate_response,
 )
 def test_repository_certificate_api_list_returns_ok(certificate_service):
     response = certificate_service.list()
@@ -31,7 +52,7 @@ def test_repository_certificate_api_list_returns_ok(certificate_service):
 
 @unittest.mock.patch(
     "argocd.services.repository.sessions.Session.get",
-    mocks.mocked_success_repository_creds_list_response,
+    mocks.mocked_success_certificate_response,
 )
 def test_repository_certificate_api_list_host_name_pattern_returns_ok(
     certificate_service,
@@ -47,7 +68,7 @@ def test_repository_certificate_api_list_host_name_pattern_returns_ok(
 
 @unittest.mock.patch(
     "argocd.services.repository.sessions.Session.get",
-    mocks.mocked_success_repository_creds_list_response,
+    mocks.mocked_success_certificate_response,
 )
 def test_repository_certificate_api_list_cert_type_returns_ok(
     certificate_service,
@@ -63,7 +84,7 @@ def test_repository_certificate_api_list_cert_type_returns_ok(
 
 @unittest.mock.patch(
     "argocd.services.repository.sessions.Session.get",
-    mocks.mocked_success_repository_creds_list_response,
+    mocks.mocked_success_certificate_response,
 )
 def test_repository_certificate_api_list_cert_sub_type_returns_ok(
     certificate_service,
@@ -83,6 +104,53 @@ def test_repository_certificate_api_list_cert_sub_type_returns_ok(
 )
 def test_repository_certificate_api_list_returns_not_ok(certificate_service):
     response = certificate_service.list()
+
+    assert isinstance(response, dict)
+    assert "error" in response.keys()
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.post",
+    mocks.mocked_success_certificate_response,
+)
+def test_repository_certificate_api_create_returns_ok(
+    certificate_service, certificate_service_create_payload
+):
+    response = certificate_service.create(certificate_service_create_payload)
+
+    assert isinstance(response, dict)
+    assert isinstance(response["items"], list)
+    assert "items" in response.keys()
+    assert isinstance(response["metadata"], dict)
+    assert "metadata" in response.keys()
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.post",
+    mocks.mocked_success_certificate_response,
+)
+def test_repository_certificate_api_create_upsert_returns_ok(
+    certificate_service, certificate_service_create_payload
+):
+    response = certificate_service.create(
+        certificate_service_create_payload, upsert=True
+    )
+
+    assert isinstance(response, dict)
+    assert isinstance(response["items"], list)
+    assert "items" in response.keys()
+    assert isinstance(response["metadata"], dict)
+    assert "metadata" in response.keys()
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.post",
+    mocks.mocked_failure_generic_response,
+)
+def test_repository_certificate_api_create_returns_not_ok(
+    certificate_service, certificate_service_create_payload
+):
+    response = certificate_service.create(certificate_service_create_payload)
 
     assert isinstance(response, dict)
     assert "error" in response.keys()
