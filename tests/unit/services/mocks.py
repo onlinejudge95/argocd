@@ -117,7 +117,7 @@ def mocked_success_repository_create_response(*args, **kwargs):
 def mocked_success_repository_delete_response(*args, **kwargs):
     class DummyClass:
         def json(self):
-            return dict()
+            return {}
 
     return DummyClass()
 
