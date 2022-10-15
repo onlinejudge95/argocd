@@ -59,7 +59,6 @@ def test_repository_api_list_returns_ok(repository_service):
     assert "metadata" in response.keys()
 
 
-# TODO:- Write more tests for this API
 @unittest.mock.patch(
     "argocd.services.repository.sessions.Session.get",
     mocks.mocked_success_repository_list_response,
@@ -74,7 +73,6 @@ def test_repository_api_list_force_refresh_returns_ok(repository_service):
     assert "metadata" in response.keys()
 
 
-# TODO:- Write more tests for this API
 @unittest.mock.patch(
     "argocd.services.repository.sessions.Session.get",
     mocks.mocked_success_repository_list_response,
@@ -152,6 +150,37 @@ def test_repository_api_create_returns_non_ok(
     repository_service, repository_service_create_payload
 ):
     response = repository_service.create(repository_service_create_payload)
+
+    assert isinstance(response, dict)
+    assert "error" in response.keys()
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.put",
+    mocks.mocked_success_repository_create_response,
+)
+def test_repository_api_update_returns_ok(
+    repository_service, repository_service_create_payload
+):
+    response = repository_service.update(
+        "dummy_repository", repository_service_create_payload
+    )
+
+    assert isinstance(response, dict)
+    assert "connectionState" in response.keys()
+    assert isinstance(response["connectionState"], dict)
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.put",
+    mocks.mocked_failure_generic_response,
+)
+def test_repository_api_update_returns_non_ok(
+    repository_service, repository_service_create_payload
+):
+    response = repository_service.update(
+        "dummy_repository", repository_service_create_payload
+    )
 
     assert isinstance(response, dict)
     assert "error" in response.keys()

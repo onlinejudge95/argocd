@@ -41,3 +41,12 @@ class RepositoryService:
             f"{self.base_url}/api/v1/repositories", params=params, json=payload
         )
         return response.json()
+
+    def update(self, repo, payload):
+        """
+        UpdateRepository updates a repository configuration
+        """
+        response = self.session.put(
+            f"{self.base_url}/api/v1/repositories/{repo}", json=payload
+        )
+        return response.json()
