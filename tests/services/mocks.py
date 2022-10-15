@@ -144,3 +144,42 @@ def mocked_success_repository_list_refs_response(*args, **kwargs):
             return {"branches": ["string"], "tags": ["string"]}
 
     return DummyClass()
+
+
+def mocked_success_repository_get_app_response(*args, **kwargs):
+    class DummyClass:
+        def json(self):
+            return {
+                "directory": {},
+                "helm": {
+                    "fileParameters": [{"name": "string", "path": "string"}],
+                    "name": "string",
+                    "parameters": [
+                        {"forceString": True, "name": "string", "value": "string"}
+                    ],
+                    "valueFiles": ["string"],
+                    "values": "string",
+                },
+                "ksonnet": {
+                    "environments": {
+                        "property1": {
+                            "destination": {"namespace": "string", "server": "string"},
+                            "k8sVersion": "string",
+                            "name": "string",
+                        },
+                        "property2": {
+                            "destination": {"namespace": "string", "server": "string"},
+                            "k8sVersion": "string",
+                            "name": "string",
+                        },
+                    },
+                    "name": "string",
+                    "parameters": [
+                        {"component": "string", "name": "string", "value": "string"}
+                    ],
+                },
+                "kustomize": {"images": ["string"]},
+                "type": "string",
+            }
+
+    return DummyClass()

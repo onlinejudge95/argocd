@@ -115,3 +115,12 @@ class RepositoryService:
             f"{self.base_url}/api/v1/repositories{repo}/refs", params=params
         )
         return response.json()
+
+    def get_app(self, repo, payload):
+        """
+        GetAppDetails returns application details by given path
+        """
+        response = self.session.post(
+            f"{self.base_url}/api/v1/repositories{repo}/appdetails", json=payload
+        )
+        return response.json()

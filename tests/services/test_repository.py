@@ -45,6 +45,60 @@ def repository_service_create_payload():
     }
 
 
+@pytest.fixture
+def repository_service_get_app_payload():
+    return {
+        "appName": "string",
+        "source": {
+            "chart": "string",
+            "directory": {
+                "exclude": "string",
+                "include": "string",
+                "jsonnet": {
+                    "extVars": [{"code": True, "name": "string", "value": "string"}],
+                    "libs": ["string"],
+                    "tlas": [{"code": True, "name": "string", "value": "string"}],
+                },
+                "recurse": True,
+            },
+            "helm": {
+                "fileParameters": [{"name": "string", "path": "string"}],
+                "parameters": [
+                    {"forceString": True, "name": "string", "value": "string"}
+                ],
+                "passCredentials": True,
+                "releaseName": "string",
+                "valueFiles": ["string"],
+                "values": "string",
+                "version": "string",
+            },
+            "ksonnet": {
+                "environment": "string",
+                "parameters": [
+                    {"component": "string", "name": "string", "value": "string"}
+                ],
+            },
+            "kustomize": {
+                "commonAnnotations": {"property1": "string", "property2": "string"},
+                "commonLabels": {"property1": "string", "property2": "string"},
+                "forceCommonAnnotations": True,
+                "forceCommonLabels": True,
+                "images": ["string"],
+                "namePrefix": "string",
+                "nameSuffix": "string",
+                "version": "string",
+            },
+            "path": "string",
+            "plugin": {
+                "env": [{"name": "string", "value": "string"}],
+                "name": "string",
+            },
+            "repoURL": "string",
+            "targetRevision": "string",
+        },
+    }
+
+
 @unittest.mock.patch(
     "argocd.services.repository.sessions.Session.get",
     mocks.mocked_success_repository_list_response,
@@ -360,6 +414,38 @@ def test_repository_api_list_refs_force_refresh_return_ok(repository_service):
 )
 def test_repository_api_list_refs_return_non_ok(repository_service):
     response = repository_service.list_refs("dummy_repository")
+
+    assert isinstance(response, dict)
+    assert "error" in response.keys()
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.post",
+    mocks.mocked_success_repository_get_app_response,
+)
+def test_repository_api_get_app_return_ok(
+    repository_service, repository_service_get_app_payload
+):
+    response = repository_service.get_app(
+        "dummy_repository", repository_service_get_app_payload
+    )
+
+    assert isinstance(response, dict)
+    assert "directory" in response.keys()
+    assert isinstance(response["directory"], dict)
+    assert isinstance(response["type"], str)
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.post",
+    mocks.mocked_failure_generic_response,
+)
+def test_repository_api_get_app_return_non_ok(
+    repository_service, repository_service_get_app_payload
+):
+    response = repository_service.get_app(
+        "dummy_repository", repository_service_get_app_payload
+    )
 
     assert isinstance(response, dict)
     assert "error" in response.keys()
