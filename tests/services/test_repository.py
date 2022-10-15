@@ -285,3 +285,38 @@ def test_repository_api_list_apps_returns_non_ok(repository_service):
 
     assert isinstance(response, dict)
     assert "error" in response.keys()
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.get",
+    mocks.mocked_success_repository_list_charts_response,
+)
+def test_repository_api_list_charts_return_ok(repository_service):
+    response = repository_service.list_charts("dummy_repository")
+
+    assert isinstance(response, dict)
+    assert "items" in response.keys()
+    assert isinstance(response["items"], list)
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.get",
+    mocks.mocked_success_repository_list_charts_response,
+)
+def test_repository_api_list_charts_force_refresh_return_ok(repository_service):
+    response = repository_service.list_charts("dummy_repository", force_refresh=True)
+
+    assert isinstance(response, dict)
+    assert "items" in response.keys()
+    assert isinstance(response["items"], list)
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.get",
+    mocks.mocked_failure_generic_response,
+)
+def test_repository_api_list_charts_return_non_ok(repository_service):
+    response = repository_service.list_charts("dummy_repository")
+
+    assert isinstance(response, dict)
+    assert "error" in response.keys()

@@ -128,3 +128,11 @@ def mocked_success_repository_list_apps_response(*args, **kwargs):
             return {"items": [{"path": "string", "type": "string"}]}
 
     return DummyClass()
+
+
+def mocked_success_repository_list_charts_response(*args, **kwargs):
+    class DummyClass:
+        def json(self):
+            return {"items": [{"name": "string", "versions": ["string"]}]}
+
+    return DummyClass()

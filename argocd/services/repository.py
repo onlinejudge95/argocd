@@ -89,3 +89,16 @@ class RepositoryService:
             f"{self.base_url}/api/v1/repositories/{repo}/apps", params=params
         )
         return response.json()
+
+    def list_charts(self, repo, force_refresh=False):
+        """
+        GetHelmCharts returns list of helm charts in the specified repository
+        """
+        params = {}
+        if force_refresh:
+            params["forceRefresh"] = force_refresh
+
+        response = self.session.get(
+            f"{self.base_url}/api/v1/repositories{repo}/helmcharts", params=params
+        )
+        return response.json()
