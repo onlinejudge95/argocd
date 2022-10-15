@@ -29,4 +29,7 @@ argocd
 ## DeepSource
 [![DeepSource](https://deepsource.io/gh/onlinejudge95/argocd.svg/?label=active+issues&show_trend=true&token=k4vYSD7ZovLMXroo2Kxi9z3q)](https://deepsource.io/gh/onlinejudge95/argocd/?ref=repository-badge)
 
+## GitLocalization
+[![gitlocalized ](https://gitlocalize.com/repo/8068/whole_project/badge.svg)](https://gitlocalize.com/repo/8068/whole_project?utm_source=badge)
+
 Python client for argocd server. This provides unique interface for the argocd REST APIs.
