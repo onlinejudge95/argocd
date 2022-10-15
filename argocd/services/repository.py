@@ -13,9 +13,7 @@ class RepositoryService:
         self.session.headers.update({"Authorization": f"Bearer {token}"})
 
     def list(self, repo=None, force_refresh=False):
-        """
-        ListRepositories gets a list of all configured repositories
-        """
+        """ListRepositories gets a list of all configured repositories"""
         params = {}
         if repo:
             params["repo"] = repo
@@ -28,9 +26,7 @@ class RepositoryService:
         return response.json()
 
     def create(self, payload, upsert=False, creds_only=False):
-        """
-        CreateRepository creates a new repository configuration
-        """
+        """CreateRepository creates a new repository configuration"""
         params = {}
         if upsert:
             params["upsert"] = upsert
@@ -43,18 +39,14 @@ class RepositoryService:
         return response.json()
 
     def update(self, repo, payload):
-        """
-        UpdateRepository updates a repository configuration
-        """
+        """UpdateRepository updates a repository configuration"""
         response = self.session.put(
             f"{self.base_url}/api/v1/repositories/{repo}", json=payload
         )
         return response.json()
 
     def get(self, repo, force_refresh=False):
-        """
-        Get returns a repository or its credentials
-        """
+        """Get returns a repository or its credentials"""
         params = {}
         if force_refresh:
             params["forceRefresh"] = force_refresh
@@ -65,9 +57,7 @@ class RepositoryService:
         return response.json()
 
     def delete(self, repo, force_refresh=False):
-        """
-        DeleteRepository deletes a repository from the configuration
-        """
+        """DeleteRepository deletes a repository from the configuration"""
         params = {}
         if force_refresh:
             params["forceRefresh"] = force_refresh
@@ -78,9 +68,7 @@ class RepositoryService:
         return response.json()
 
     def list_apps(self, repo, revision=None):
-        """
-        ListApps returns list of apps in the repo
-        """
+        """ListApps returns list of apps in the repo"""
         params = {}
         if revision:
             params["revision"] = revision
@@ -91,9 +79,7 @@ class RepositoryService:
         return response.json()
 
     def list_charts(self, repo, force_refresh=False):
-        """
-        GetHelmCharts returns list of helm charts in the specified repository
-        """
+        """GetHelmCharts returns list of helm charts in the specified repository"""
         params = {}
         if force_refresh:
             params["forceRefresh"] = force_refresh
@@ -104,9 +90,7 @@ class RepositoryService:
         return response.json()
 
     def list_refs(self, repo, force_refresh=False):
-        """
-        RepositoryService_ListRefs
-        """
+        """RepositoryService_ListRefs"""
         params = {}
         if force_refresh:
             params["forceRefresh"] = force_refresh
@@ -135,9 +119,7 @@ class RepositoryService:
         proxy="",
         project="",
     ):
-        """
-        ValidateAccess validates access to a repository with given parameters
-        """
+        """ValidateAccess validates access to a repository with given parameters"""
         params = {}
         if username != "":
             params["username"] = username
@@ -175,9 +157,7 @@ class RepositoryService:
         return response.json()
 
     def get_app(self, repo, payload):
-        """
-        GetAppDetails returns application details by given path
-        """
+        """GetAppDetails returns application details by given path"""
         response = self.session.post(
             f"{self.base_url}/api/v1/repositories{repo}/appdetails", json=payload
         )
