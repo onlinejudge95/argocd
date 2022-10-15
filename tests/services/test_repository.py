@@ -184,3 +184,38 @@ def test_repository_api_update_returns_non_ok(
 
     assert isinstance(response, dict)
     assert "error" in response.keys()
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.get",
+    mocks.mocked_success_repository_create_response,
+)
+def test_repository_api_get_returns_ok(repository_service):
+    response = repository_service.get("dummy_repository")
+
+    assert isinstance(response, dict)
+    assert "connectionState" in response.keys()
+    assert isinstance(response["connectionState"], dict)
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.get",
+    mocks.mocked_success_repository_create_response,
+)
+def test_repository_api_get_force_refresh_returns_ok(repository_service):
+    response = repository_service.get("dummy_repository", force_refresh=True)
+
+    assert isinstance(response, dict)
+    assert "connectionState" in response.keys()
+    assert isinstance(response["connectionState"], dict)
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.get",
+    mocks.mocked_failure_generic_response,
+)
+def test_repository_api_get_returns_non_ok(repository_service):
+    response = repository_service.get("dummy_repository")
+
+    assert isinstance(response, dict)
+    assert "error" in response.keys()

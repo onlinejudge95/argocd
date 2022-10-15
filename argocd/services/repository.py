@@ -50,3 +50,16 @@ class RepositoryService:
             f"{self.base_url}/api/v1/repositories/{repo}", json=payload
         )
         return response.json()
+
+    def get(self, repo, force_refresh=False):
+        """
+        Get returns a repository or its credentials
+        """
+        params = {}
+        if force_refresh:
+            params["forceRefresh"] = force_refresh
+
+        response = self.session.get(
+            f"{self.base_url}/api/v1/repositories{repo}", params=params
+        )
+        return response.json()
