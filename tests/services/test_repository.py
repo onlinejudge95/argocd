@@ -15,11 +15,41 @@ def repository_service():
     return repository.RepositoryService()
 
 
+@pytest.fixture
+def repository_service_create_payload():
+    return {
+        "connectionState": {
+            "attemptedAt": {"nanos": 0, "seconds": "string"},
+            "message": "string",
+            "status": "string",
+        },
+        "enableLfs": True,
+        "enableOCI": True,
+        "githubAppEnterpriseBaseUrl": "string",
+        "githubAppID": "string",
+        "githubAppInstallationID": "string",
+        "githubAppPrivateKey": "string",
+        "inheritedCreds": True,
+        "insecure": True,
+        "insecureIgnoreHostKey": True,
+        "name": "string",
+        "password": "string",
+        "project": "string",
+        "proxy": "string",
+        "repo": "string",
+        "sshPrivateKey": "string",
+        "tlsClientCertData": "string",
+        "tlsClientCertKey": "string",
+        "type": "string",
+        "username": "string",
+    }
+
+
 @unittest.mock.patch(
     "argocd.services.repository.sessions.Session.get",
     mocks.mocked_success_repository_list_response,
 )
-def test_repository_api_returns_ok(repository_service):
+def test_repository_api_list_returns_ok(repository_service):
     response = repository_service.list()
 
     assert isinstance(response, dict)
@@ -34,7 +64,7 @@ def test_repository_api_returns_ok(repository_service):
     "argocd.services.repository.sessions.Session.get",
     mocks.mocked_success_repository_list_response,
 )
-def test_repository_api_force_refresh_returns_ok(repository_service):
+def test_repository_api_list_force_refresh_returns_ok(repository_service):
     response = repository_service.list(force_refresh=True)
 
     assert isinstance(response, dict)
@@ -49,7 +79,7 @@ def test_repository_api_force_refresh_returns_ok(repository_service):
     "argocd.services.repository.sessions.Session.get",
     mocks.mocked_success_repository_list_response,
 )
-def test_repository_api_repo_returns_ok(repository_service):
+def test_repository_api_list_repo_returns_ok(repository_service):
     response = repository_service.list(repo="http://github.com/user/repo")
 
     assert isinstance(response, dict)
@@ -63,8 +93,65 @@ def test_repository_api_repo_returns_ok(repository_service):
     "argocd.services.repository.sessions.Session.get",
     mocks.mocked_failure_generic_response,
 )
-def test_repository_api_returns_non_ok(repository_service):
+def test_repository_api_list_returns_non_ok(repository_service):
     response = repository_service.list()
+
+    assert isinstance(response, dict)
+    assert "error" in response.keys()
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.post",
+    mocks.mocked_success_repository_create_response,
+)
+def test_repository_api_create_returns_ok(
+    repository_service, repository_service_create_payload
+):
+    response = repository_service.create(repository_service_create_payload)
+
+    assert isinstance(response, dict)
+    assert "connectionState" in response.keys()
+    assert isinstance(response["connectionState"], dict)
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.post",
+    mocks.mocked_success_repository_create_response,
+)
+def test_repository_api_create_upsert_returns_ok(
+    repository_service, repository_service_create_payload
+):
+    response = repository_service.create(repository_service_create_payload, upsert=True)
+
+    assert isinstance(response, dict)
+    assert "connectionState" in response.keys()
+    assert isinstance(response["connectionState"], dict)
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.post",
+    mocks.mocked_success_repository_create_response,
+)
+def test_repository_api_create_creds_only_returns_ok(
+    repository_service, repository_service_create_payload
+):
+    response = repository_service.create(
+        repository_service_create_payload, creds_only=True
+    )
+
+    assert isinstance(response, dict)
+    assert "connectionState" in response.keys()
+    assert isinstance(response["connectionState"], dict)
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.post",
+    mocks.mocked_failure_generic_response,
+)
+def test_repository_api_create_returns_non_ok(
+    repository_service, repository_service_create_payload
+):
+    response = repository_service.create(repository_service_create_payload)
 
     assert isinstance(response, dict)
     assert "error" in response.keys()

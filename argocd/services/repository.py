@@ -26,3 +26,18 @@ class RepositoryService:
             f"{self.base_url}/api/v1/repositories", params=params
         )
         return response.json()
+
+    def create(self, payload, upsert=False, creds_only=False):
+        """
+        CreateRepository creates a new repository configuration
+        """
+        params = {}
+        if upsert:
+            params["upsert"] = upsert
+        if creds_only:
+            params["credsOnly"] = creds_only
+
+        response = self.session.post(
+            f"{self.base_url}/api/v1/repositories", params=params, json=payload
+        )
+        return response.json()

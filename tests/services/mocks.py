@@ -79,3 +79,36 @@ def mocked_success_repository_list_response(*args, **kwargs):
             }
 
     return DummyClass()
+
+
+def mocked_success_repository_create_response(*args, **kwargs):
+    class DummyClass:
+        def json(self):
+            return {
+                "connectionState": {
+                    "attemptedAt": {"nanos": 0, "seconds": "string"},
+                    "message": "string",
+                    "status": "string",
+                },
+                "enableLfs": True,
+                "enableOCI": True,
+                "githubAppEnterpriseBaseUrl": "string",
+                "githubAppID": "string",
+                "githubAppInstallationID": "string",
+                "githubAppPrivateKey": "string",
+                "inheritedCreds": True,
+                "insecure": True,
+                "insecureIgnoreHostKey": True,
+                "name": "string",
+                "password": "string",
+                "project": "string",
+                "proxy": "string",
+                "repo": "string",
+                "sshPrivateKey": "string",
+                "tlsClientCertData": "string",
+                "tlsClientCertKey": "string",
+                "type": "string",
+                "username": "string",
+            }
+
+    return DummyClass()
