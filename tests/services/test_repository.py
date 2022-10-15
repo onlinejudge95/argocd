@@ -449,3 +449,214 @@ def test_repository_api_get_app_return_non_ok(
 
     assert isinstance(response, dict)
     assert "error" in response.keys()
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.post",
+    mocks.mocked_success_repository_delete_response,
+)
+def test_repository_api_validate_access_return_ok(repository_service):
+    response = repository_service.validate_access("dummy_repository")
+
+    assert isinstance(response, dict)
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.post",
+    mocks.mocked_success_repository_delete_response,
+)
+def test_repository_api_validate_access_username_return_ok(repository_service):
+    response = repository_service.validate_access(
+        "dummy_repository", username="dummy_username"
+    )
+
+    assert isinstance(response, dict)
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.post",
+    mocks.mocked_success_repository_delete_response,
+)
+def test_repository_api_validate_access_password_return_ok(repository_service):
+    response = repository_service.validate_access(
+        "dummy_repository", password="dummy_password"
+    )
+
+    assert isinstance(response, dict)
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.post",
+    mocks.mocked_success_repository_delete_response,
+)
+def test_repository_api_validate_access_ssh_private_key_return_ok(repository_service):
+    response = repository_service.validate_access(
+        "dummy_repository", ssh_private_key="dummy_ssh_private_key"
+    )
+
+    assert isinstance(response, dict)
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.post",
+    mocks.mocked_success_repository_delete_response,
+)
+def test_repository_api_validate_access_insecure_return_ok(repository_service):
+    response = repository_service.validate_access("dummy_repository", insecure=True)
+
+    assert isinstance(response, dict)
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.post",
+    mocks.mocked_success_repository_delete_response,
+)
+def test_repository_api_validate_access_tls_client_cert_data_return_ok(
+    repository_service,
+):
+    response = repository_service.validate_access(
+        "dummy_repository", tls_client_cert_data="dummy_tls_client_cert_data"
+    )
+
+    assert isinstance(response, dict)
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.post",
+    mocks.mocked_success_repository_delete_response,
+)
+def test_repository_api_validate_access_tls_client_cert_key_return_ok(
+    repository_service,
+):
+    response = repository_service.validate_access(
+        "dummy_repository", tls_client_cert_key="dummy_tls_client_cert_key"
+    )
+
+    assert isinstance(response, dict)
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.post",
+    mocks.mocked_success_repository_delete_response,
+)
+def test_repository_api_validate_access_type_return_ok(repository_service):
+    response = repository_service.validate_access("dummy_repository", type="dummy_type")
+
+    assert isinstance(response, dict)
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.post",
+    mocks.mocked_success_repository_delete_response,
+)
+def test_repository_api_validate_access_name_return_ok(repository_service):
+    response = repository_service.validate_access("dummy_repository", name="dummy_name")
+
+    assert isinstance(response, dict)
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.post",
+    mocks.mocked_success_repository_delete_response,
+)
+def test_repository_api_validate_access_enable_oci_return_ok(
+    repository_service,
+):
+    response = repository_service.validate_access("dummy_repository", enable_oci=True)
+
+    assert isinstance(response, dict)
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.post",
+    mocks.mocked_success_repository_delete_response,
+)
+def test_repository_api_validate_access_github_app_private_key_return_ok(
+    repository_service,
+):
+    response = repository_service.validate_access(
+        "dummy_repository", github_app_private_key="dummy_github_app_private_key"
+    )
+
+    assert isinstance(response, dict)
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.post",
+    mocks.mocked_success_repository_delete_response,
+)
+def test_repository_api_validate_access_github_app_id_return_ok(
+    repository_service,
+):
+    response = repository_service.validate_access(
+        "dummy_repository", github_app_id="dummy_github_app_id"
+    )
+
+    assert isinstance(response, dict)
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.post",
+    mocks.mocked_success_repository_delete_response,
+)
+def test_repository_api_validate_access_github_app_installation_id_return_ok(
+    repository_service,
+):
+    response = repository_service.validate_access(
+        "dummy_repository",
+        github_app_installation_id="dummy_github_app_installation_id",
+    )
+
+    assert isinstance(response, dict)
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.post",
+    mocks.mocked_success_repository_delete_response,
+)
+def test_repository_api_validate_access_github_app_enterprise_base_url_return_ok(
+    repository_service,
+):
+    response = repository_service.validate_access(
+        "dummy_repository",
+        github_app_enterprise_base_url="dummy_github_app_enterprise_base_url",
+    )
+
+    assert isinstance(response, dict)
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.post",
+    mocks.mocked_success_repository_delete_response,
+)
+def test_repository_api_validate_access_proxy_return_ok(repository_service):
+    response = repository_service.validate_access(
+        "dummy_repository", proxy="dummy_proxy"
+    )
+
+    assert isinstance(response, dict)
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.post",
+    mocks.mocked_success_repository_delete_response,
+)
+def test_repository_api_validate_access_project_return_ok(
+    repository_service,
+):
+    response = repository_service.validate_access(
+        "dummy_repository", project="dummy_project"
+    )
+
+    assert isinstance(response, dict)
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.post",
+    mocks.mocked_failure_generic_response,
+)
+def test_repository_api_validate_access_return_non_ok(repository_service):
+    response = repository_service.validate_access("dummy_repository")
+
+    assert isinstance(response, dict)
+    assert "error" in response.keys()

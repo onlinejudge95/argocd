@@ -116,6 +116,64 @@ class RepositoryService:
         )
         return response.json()
 
+    def validate_access(
+        self,
+        repo,
+        username="",
+        password="",
+        ssh_private_key="",
+        insecure=False,
+        tls_client_cert_data="",
+        tls_client_cert_key="",
+        type="",
+        name="",
+        enable_oci=False,
+        github_app_private_key="",
+        github_app_id="",
+        github_app_installation_id="",
+        github_app_enterprise_base_url="",
+        proxy="",
+        project="",
+    ):
+        """
+        ValidateAccess validates access to a repository with given parameters
+        """
+        params = {}
+        if username != "":
+            params["username"] = username
+        if password != "":
+            params["password"] = password
+        if ssh_private_key != "":
+            params["sshPrivateKey"] = ssh_private_key
+        if insecure:
+            params["insecure"] = insecure
+        if tls_client_cert_data != "":
+            params["tlsClientCertData"] = tls_client_cert_data
+        if tls_client_cert_key != "":
+            params["tlsClientCertKey"] = tls_client_cert_key
+        if type != "":
+            params["type"] = type
+        if name != "":
+            params["name"] = name
+        if enable_oci:
+            params["enableOci"] = enable_oci
+        if github_app_private_key != "":
+            params["githubAppPrivateKey"] = github_app_private_key
+        if github_app_id != "":
+            params["githubAppID"] = github_app_id
+        if github_app_installation_id != "":
+            params["githubAppInstallationID"] = github_app_installation_id
+        if github_app_enterprise_base_url != "":
+            params["githubAppEnterpriseBaseUrl"] = github_app_enterprise_base_url
+        if proxy != "":
+            params["proxy"] = proxy
+        if project != "":
+            params["project"] = project
+        response = self.session.post(
+            f"{self.base_url}/api/v1/repositories{repo}/validate", json=repo
+        )
+        return response.json()
+
     def get_app(self, repo, payload):
         """
         GetAppDetails returns application details by given path
