@@ -63,3 +63,16 @@ class RepositoryService:
             f"{self.base_url}/api/v1/repositories{repo}", params=params
         )
         return response.json()
+
+    def delete(self, repo, force_refresh=False):
+        """
+        DeleteRepository deletes a repository from the configuration
+        """
+        params = {}
+        if force_refresh:
+            params["forceRefresh"] = force_refresh
+
+        response = self.session.delete(
+            f"{self.base_url}/api/v1/repositories{repo}", params=params
+        )
+        return response.json()
