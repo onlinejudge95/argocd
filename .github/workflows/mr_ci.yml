@@ -38,5 +38,5 @@ jobs:
         flake8 --count --show-source --statistics --exclude .git,env,__init__.py --max-line-length 88 .
     - name: Coverage with pytest
       run: |
-        pytest --no-cov-on-fail --cov argocd --cov-report html --cov-report term --cov-report xml tests
-        ./codecov -t ${CODECOV_TOKEN}
+        pytest --no-cov-on-fail --cov argocd --cov-report html --cov-report term --cov-report xml tests/unit
+        ./codecov -t ${CODECOV_TOKEN} -F unit
