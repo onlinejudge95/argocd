@@ -41,3 +41,20 @@ class CertificateService:
             f"{self.base_url}/api/v1/certificates", params=params, json=payload
         )
         return response.json()
+
+    def delete(self, host_name_pattern="", cert_type="", cert_sub_type=""):
+        """
+        Delete the certificates that match the RepositoryCertificateQuery
+        """
+        params = {}
+        if host_name_pattern:
+            params["hostNamePattern"] = host_name_pattern
+        if cert_type:
+            params["certYype"] = cert_type
+        if cert_sub_type:
+            params["certSubType"] = cert_sub_type
+
+        response = self.session.delete(
+            f"{self.base_url}/api/v1/certificates", params=params
+        )
+        return response.json()

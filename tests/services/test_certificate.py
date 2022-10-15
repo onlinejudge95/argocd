@@ -154,3 +154,74 @@ def test_repository_certificate_api_create_returns_not_ok(
 
     assert isinstance(response, dict)
     assert "error" in response.keys()
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.delete",
+    mocks.mocked_success_certificate_response,
+)
+def test_repository_certificate_api_delete_returns_ok(certificate_service):
+    response = certificate_service.delete()
+
+    assert isinstance(response, dict)
+    assert isinstance(response["items"], list)
+    assert "items" in response.keys()
+    assert isinstance(response["metadata"], dict)
+    assert "metadata" in response.keys()
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.delete",
+    mocks.mocked_success_certificate_response,
+)
+def test_repository_certificate_api_delete_host_name_pattern_returns_ok(
+    certificate_service,
+):
+    response = certificate_service.delete(host_name_pattern="dummy_host_name_pattern")
+
+    assert isinstance(response, dict)
+    assert isinstance(response["items"], list)
+    assert "items" in response.keys()
+    assert isinstance(response["metadata"], dict)
+    assert "metadata" in response.keys()
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.delete",
+    mocks.mocked_success_certificate_response,
+)
+def test_repository_certificate_api_delete_cert_type_returns_ok(certificate_service):
+    response = certificate_service.delete(cert_type="dummy_cert_type")
+
+    assert isinstance(response, dict)
+    assert isinstance(response["items"], list)
+    assert "items" in response.keys()
+    assert isinstance(response["metadata"], dict)
+    assert "metadata" in response.keys()
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.delete",
+    mocks.mocked_success_certificate_response,
+)
+def test_repository_certificate_api_delete_cert_sub_type_returns_ok(
+    certificate_service,
+):
+    response = certificate_service.delete(cert_sub_type="dummy_cert_sub_type")
+
+    assert isinstance(response, dict)
+    assert isinstance(response["items"], list)
+    assert "items" in response.keys()
+    assert isinstance(response["metadata"], dict)
+    assert "metadata" in response.keys()
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.delete",
+    mocks.mocked_failure_generic_response,
+)
+def test_repository_certificate_api_delete_returns_not_ok(certificate_service):
+    response = certificate_service.delete()
+
+    assert isinstance(response, dict)
+    assert "error" in response.keys()
