@@ -102,3 +102,16 @@ class RepositoryService:
             f"{self.base_url}/api/v1/repositories{repo}/helmcharts", params=params
         )
         return response.json()
+
+    def list_refs(self, repo, force_refresh=False):
+        """
+        RepositoryService_ListRefs
+        """
+        params = {}
+        if force_refresh:
+            params["forceRefresh"] = force_refresh
+
+        response = self.session.get(
+            f"{self.base_url}/api/v1/repositories{repo}/refs", params=params
+        )
+        return response.json()

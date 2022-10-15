@@ -320,3 +320,46 @@ def test_repository_api_list_charts_return_non_ok(repository_service):
 
     assert isinstance(response, dict)
     assert "error" in response.keys()
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.get",
+    mocks.mocked_success_repository_list_refs_response,
+)
+def test_repository_api_list_refs_return_ok(repository_service):
+    response = repository_service.list_refs("dummy_repository")
+
+    assert isinstance(response, dict)
+    assert "branches" in response.keys()
+    assert isinstance(response["branches"], list)
+    assert isinstance(response["branches"][0], str)
+    assert "tags" in response.keys()
+    assert isinstance(response["tags"], list)
+    assert isinstance(response["tags"][0], str)
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.get",
+    mocks.mocked_success_repository_list_refs_response,
+)
+def test_repository_api_list_refs_force_refresh_return_ok(repository_service):
+    response = repository_service.list_refs("dummy_repository", force_refresh=True)
+
+    assert isinstance(response, dict)
+    assert "branches" in response.keys()
+    assert isinstance(response["branches"], list)
+    assert isinstance(response["branches"][0], str)
+    assert "tags" in response.keys()
+    assert isinstance(response["tags"], list)
+    assert isinstance(response["tags"][0], str)
+
+
+@unittest.mock.patch(
+    "argocd.services.repository.sessions.Session.get",
+    mocks.mocked_failure_generic_response,
+)
+def test_repository_api_list_refs_return_non_ok(repository_service):
+    response = repository_service.list_refs("dummy_repository")
+
+    assert isinstance(response, dict)
+    assert "error" in response.keys()

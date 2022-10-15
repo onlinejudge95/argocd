@@ -136,3 +136,11 @@ def mocked_success_repository_list_charts_response(*args, **kwargs):
             return {"items": [{"name": "string", "versions": ["string"]}]}
 
     return DummyClass()
+
+
+def mocked_success_repository_list_refs_response(*args, **kwargs):
+    class DummyClass:
+        def json(self):
+            return {"branches": ["string"], "tags": ["string"]}
+
+    return DummyClass()
