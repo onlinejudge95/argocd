@@ -235,3 +235,27 @@ def mocked_success_repository_creds_create_response(*args, **kwargs):
             }
 
     return DummyClass()
+
+
+def mocked_success_certificate_response(*args, **kwargs):
+    class DummyClass:
+        def json(self):
+            return {
+                "items": [
+                    {
+                        "certData": "string",
+                        "certInfo": "string",
+                        "certSubType": "string",
+                        "certType": "string",
+                        "serverName": "string",
+                    }
+                ],
+                "metadata": {
+                    "continue": "string",
+                    "remainingItemCount": "string",
+                    "resourceVersion": "string",
+                    "selfLink": "string",
+                },
+            }
+
+    return DummyClass()
