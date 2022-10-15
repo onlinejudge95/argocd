@@ -26,4 +26,7 @@ argocd
 ## License
 ![GitHub](https://img.shields.io/github/license/onlinejudge95/argocd)
 
+## DeepSource
+[![DeepSource](https://deepsource.io/gh/onlinejudge95/argocd.svg/?label=active+issues&show_trend=true&token=k4vYSD7ZovLMXroo2Kxi9z3q)](https://deepsource.io/gh/onlinejudge95/argocd/?ref=repository-badge)
+
 Python client for argocd server. This provides unique interface for the argocd REST APIs.

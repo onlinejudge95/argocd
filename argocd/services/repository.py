@@ -125,7 +125,7 @@ class RepositoryService:
         insecure=False,
         tls_client_cert_data="",
         tls_client_cert_key="",
-        type="",
+        access_type="",
         name="",
         enable_oci=False,
         github_app_private_key="",
@@ -151,8 +151,8 @@ class RepositoryService:
             params["tlsClientCertData"] = tls_client_cert_data
         if tls_client_cert_key != "":
             params["tlsClientCertKey"] = tls_client_cert_key
-        if type != "":
-            params["type"] = type
+        if access_type != "":
+            params["type"] = access_type
         if name != "":
             params["name"] = name
         if enable_oci:

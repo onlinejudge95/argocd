@@ -539,8 +539,10 @@ def test_repository_api_validate_access_tls_client_cert_key_return_ok(
     "argocd.services.repository.sessions.Session.post",
     mocks.mocked_success_repository_delete_response,
 )
-def test_repository_api_validate_access_type_return_ok(repository_service):
-    response = repository_service.validate_access("dummy_repository", type="dummy_type")
+def test_repository_api_validate_access_access_type_return_ok(repository_service):
+    response = repository_service.validate_access(
+        "dummy_repository", access_type="dummy_access_type"
+    )
 
     assert isinstance(response, dict)
 
