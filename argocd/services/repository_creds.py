@@ -23,3 +23,17 @@ class RepositoryCredsService:
 
         response = self.session.get(f"{self.base_url}/api/v1/repocreds", params=params)
         return response.json()
+
+    def create(self, payload, upsert=False):
+        """
+        ListRepositoryCredentials gets a list of all configured
+        repository credential sets
+        """
+        params = {}
+        if upsert:
+            params["upsert"] = upsert
+
+        response = self.session.post(
+            f"{self.base_url}/api/v1/repocreds", params=params, json=payload
+        )
+        return response.json()

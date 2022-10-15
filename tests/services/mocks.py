@@ -214,3 +214,24 @@ def mocked_success_repository_creds_list_response(*args, **kwargs):
             }
 
     return DummyClass()
+
+
+def mocked_success_repository_creds_create_response(*args, **kwargs):
+    class DummyClass:
+        def json(self):
+            return {
+                "enableOCI": True,
+                "githubAppEnterpriseBaseUrl": "string",
+                "githubAppID": "string",
+                "githubAppInstallationID": "string",
+                "githubAppPrivateKey": "string",
+                "password": "string",
+                "sshPrivateKey": "string",
+                "tlsClientCertData": "string",
+                "tlsClientCertKey": "string",
+                "type": "string",
+                "url": "string",
+                "username": "string",
+            }
+
+    return DummyClass()
