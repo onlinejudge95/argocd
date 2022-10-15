@@ -76,3 +76,16 @@ class RepositoryService:
             f"{self.base_url}/api/v1/repositories{repo}", params=params
         )
         return response.json()
+
+    def list_apps(self, repo, revision=None):
+        """
+        ListApps returns list of apps in the repo
+        """
+        params = {}
+        if revision:
+            params["revision"] = revision
+
+        response = self.session.get(
+            f"{self.base_url}/api/v1/repositories/{repo}/apps", params=params
+        )
+        return response.json()

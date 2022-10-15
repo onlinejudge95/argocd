@@ -120,3 +120,11 @@ def mocked_success_repository_delete_response(*args, **kwargs):
             return dict()
 
     return DummyClass()
+
+
+def mocked_success_repository_list_apps_response(*args, **kwargs):
+    class DummyClass:
+        def json(self):
+            return {"items": [{"path": "string", "type": "string"}]}
+
+    return DummyClass()
