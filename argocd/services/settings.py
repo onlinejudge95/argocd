@@ -1,7 +1,7 @@
-from argocd.services import _base
+from argocd.services import base
 
 
-class SettingsService(_base.BaseService):
+class SettingsService(base.BaseService):
     def get_server_settings(self):
         """
         Returns the settings information from the argo cd API server.

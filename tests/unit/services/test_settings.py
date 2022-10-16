@@ -15,7 +15,7 @@ def settings_service():
 
 
 @unittest.mock.patch(
-    "argocd.services._base.sessions.Session.get",
+    "argocd.services.base.sessions.Session.get",
     mocks.mocked_success_settings_response,
 )
 def test_settings_api_returns_ok(settings_service):
@@ -26,7 +26,7 @@ def test_settings_api_returns_ok(settings_service):
 
 
 @unittest.mock.patch(
-    "argocd.services._base.sessions.Session.get",
+    "argocd.services.base.sessions.Session.get",
     mocks.mocked_failure_generic_response,
 )
 def test_settings_api_returns_non_ok(settings_service):

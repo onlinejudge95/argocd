@@ -1,7 +1,7 @@
-from argocd.services import _base
+from argocd.services import base
 
 
-class VersionService(_base.BaseService):
+class VersionService(base.BaseService):
     def get_server_version(self):
         """
         Returns the version information from the argo cd API server.
