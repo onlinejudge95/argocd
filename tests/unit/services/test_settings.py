@@ -10,11 +10,12 @@ from tests.unit.services import mocks
 @pytest.fixture
 def settings_service():
     os.environ["ARGOCD_API_BASE_URL"] = "http://demo.com"
+    os.environ["ARGOCD_API_AUTH_TOKEN"] = "dummy_token"
     return settings.SettingsService()
 
 
 @unittest.mock.patch(
-    "argocd.services.settings.sessions.Session.get",
+    "argocd.services._base.sessions.Session.get",
     mocks.mocked_success_settings_response,
 )
 def test_settings_api_returns_ok(settings_service):
@@ -25,7 +26,7 @@ def test_settings_api_returns_ok(settings_service):
 
 
 @unittest.mock.patch(
-    "argocd.services.settings.sessions.Session.get",
+    "argocd.services._base.sessions.Session.get",
     mocks.mocked_failure_generic_response,
 )
 def test_settings_api_returns_non_ok(settings_service):
