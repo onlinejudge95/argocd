@@ -38,5 +38,36 @@ jobs:
         flake8 --count --show-source --statistics --exclude .git,build_env,test_env,__init__.py --max-line-length 88 .
     - name: Coverage with pytest
       run: |
-        pytest --no-cov-on-fail --cov argocd --cov-report html --cov-report term --cov-report xml tests
-        ./codecov -t ${CODECOV_TOKEN}
+        pytest --no-cov-on-fail --cov argocd --cov-report html --cov-report term --cov-report xml tests/unit
+        ./codecov -t ${CODECOV_TOKEN} -F unit
+  scan:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: 'Checkout Repository'
+        uses: actions/checkout@v3
+      - name: 'Dependency Review'
+        uses: actions/dependency-review-action@v2
+  analyze:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'python' ]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: ${{ matrix.language }}
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+        with:
+          category: "/language:${{matrix.language}}"
+

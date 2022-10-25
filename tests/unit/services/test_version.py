@@ -4,7 +4,7 @@ import unittest.mock
 import pytest
 
 from argocd.services import version
-from tests.services import mocks
+from tests.unit.services import mocks
 
 
 @pytest.fixture

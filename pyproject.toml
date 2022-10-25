@@ -12,14 +12,14 @@ packages = [
 
 [project]
 name = "argocd"
-version = "0.3.0"
+version = "0.5.0"
 authors = [
     { name = "Mayank Pathak", email = "onlinejudge95@gmail.com"}
 ]
 description = "Python client for ArgoCD"
 readme = "README.md"
 classifiers = [
-    "Development Status :: 1 - Planning",
+    "Development Status :: 3 - Alpha",
     "Environment :: Other Environment",
     "Intended Audience :: Developers",
     "Natural Language :: English",
