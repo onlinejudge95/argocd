@@ -100,7 +100,7 @@ def repository_service_get_app_payload():
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.get",
+    "argocd.services.base.sessions.Session.get",
     mocks.mocked_success_repository_list_response,
 )
 def test_repository_api_list_returns_ok(repository_service):
@@ -114,7 +114,7 @@ def test_repository_api_list_returns_ok(repository_service):
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.get",
+    "argocd.services.base.sessions.Session.get",
     mocks.mocked_success_repository_list_response,
 )
 def test_repository_api_list_force_refresh_returns_ok(repository_service):
@@ -128,7 +128,7 @@ def test_repository_api_list_force_refresh_returns_ok(repository_service):
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.get",
+    "argocd.services.base.sessions.Session.get",
     mocks.mocked_success_repository_list_response,
 )
 def test_repository_api_list_repo_returns_ok(repository_service):
@@ -142,7 +142,7 @@ def test_repository_api_list_repo_returns_ok(repository_service):
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.get",
+    "argocd.services.base.sessions.Session.get",
     mocks.mocked_failure_generic_response,
 )
 def test_repository_api_list_returns_non_ok(repository_service):
@@ -153,7 +153,7 @@ def test_repository_api_list_returns_non_ok(repository_service):
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.post",
+    "argocd.services.base.sessions.Session.post",
     mocks.mocked_success_repository_create_response,
 )
 def test_repository_api_create_returns_ok(
@@ -167,7 +167,7 @@ def test_repository_api_create_returns_ok(
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.post",
+    "argocd.services.base.sessions.Session.post",
     mocks.mocked_success_repository_create_response,
 )
 def test_repository_api_create_upsert_returns_ok(
@@ -181,7 +181,7 @@ def test_repository_api_create_upsert_returns_ok(
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.post",
+    "argocd.services.base.sessions.Session.post",
     mocks.mocked_success_repository_create_response,
 )
 def test_repository_api_create_creds_only_returns_ok(
@@ -197,7 +197,7 @@ def test_repository_api_create_creds_only_returns_ok(
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.post",
+    "argocd.services.base.sessions.Session.post",
     mocks.mocked_failure_generic_response,
 )
 def test_repository_api_create_returns_non_ok(
@@ -210,7 +210,7 @@ def test_repository_api_create_returns_non_ok(
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.put",
+    "argocd.services.base.sessions.Session.put",
     mocks.mocked_success_repository_create_response,
 )
 def test_repository_api_update_returns_ok(
@@ -226,7 +226,7 @@ def test_repository_api_update_returns_ok(
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.put",
+    "argocd.services.base.sessions.Session.put",
     mocks.mocked_failure_generic_response,
 )
 def test_repository_api_update_returns_non_ok(
@@ -241,7 +241,7 @@ def test_repository_api_update_returns_non_ok(
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.get",
+    "argocd.services.base.sessions.Session.get",
     mocks.mocked_success_repository_create_response,
 )
 def test_repository_api_get_returns_ok(repository_service):
@@ -253,7 +253,7 @@ def test_repository_api_get_returns_ok(repository_service):
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.get",
+    "argocd.services.base.sessions.Session.get",
     mocks.mocked_success_repository_create_response,
 )
 def test_repository_api_get_force_refresh_returns_ok(repository_service):
@@ -265,7 +265,7 @@ def test_repository_api_get_force_refresh_returns_ok(repository_service):
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.get",
+    "argocd.services.base.sessions.Session.get",
     mocks.mocked_failure_generic_response,
 )
 def test_repository_api_get_returns_non_ok(repository_service):
@@ -276,7 +276,7 @@ def test_repository_api_get_returns_non_ok(repository_service):
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.delete",
+    "argocd.services.base.sessions.Session.delete",
     mocks.mocked_success_repository_delete_response,
 )
 def test_repository_api_delete_returns_ok(repository_service):
@@ -286,7 +286,7 @@ def test_repository_api_delete_returns_ok(repository_service):
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.delete",
+    "argocd.services.base.sessions.Session.delete",
     mocks.mocked_success_repository_delete_response,
 )
 def test_repository_api_delete_force_refresh_returns_ok(repository_service):
@@ -296,7 +296,7 @@ def test_repository_api_delete_force_refresh_returns_ok(repository_service):
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.delete",
+    "argocd.services.base.sessions.Session.delete",
     mocks.mocked_failure_generic_response,
 )
 def test_repository_api_delete_returns_non_ok(repository_service):
@@ -307,7 +307,7 @@ def test_repository_api_delete_returns_non_ok(repository_service):
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.get",
+    "argocd.services.base.sessions.Session.get",
     mocks.mocked_success_repository_list_apps_response,
 )
 def test_repository_api_list_apps_returns_ok(repository_service):
@@ -319,7 +319,7 @@ def test_repository_api_list_apps_returns_ok(repository_service):
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.get",
+    "argocd.services.base.sessions.Session.get",
     mocks.mocked_success_repository_list_apps_response,
 )
 def test_repository_api_list_apps_revision_returns_ok(repository_service):
@@ -331,7 +331,7 @@ def test_repository_api_list_apps_revision_returns_ok(repository_service):
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.get",
+    "argocd.services.base.sessions.Session.get",
     mocks.mocked_failure_generic_response,
 )
 def test_repository_api_list_apps_returns_non_ok(repository_service):
@@ -342,7 +342,7 @@ def test_repository_api_list_apps_returns_non_ok(repository_service):
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.get",
+    "argocd.services.base.sessions.Session.get",
     mocks.mocked_success_repository_list_charts_response,
 )
 def test_repository_api_list_charts_return_ok(repository_service):
@@ -354,7 +354,7 @@ def test_repository_api_list_charts_return_ok(repository_service):
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.get",
+    "argocd.services.base.sessions.Session.get",
     mocks.mocked_success_repository_list_charts_response,
 )
 def test_repository_api_list_charts_force_refresh_return_ok(repository_service):
@@ -366,7 +366,7 @@ def test_repository_api_list_charts_force_refresh_return_ok(repository_service):
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.get",
+    "argocd.services.base.sessions.Session.get",
     mocks.mocked_failure_generic_response,
 )
 def test_repository_api_list_charts_return_non_ok(repository_service):
@@ -377,7 +377,7 @@ def test_repository_api_list_charts_return_non_ok(repository_service):
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.get",
+    "argocd.services.base.sessions.Session.get",
     mocks.mocked_success_repository_list_refs_response,
 )
 def test_repository_api_list_refs_return_ok(repository_service):
@@ -393,7 +393,7 @@ def test_repository_api_list_refs_return_ok(repository_service):
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.get",
+    "argocd.services.base.sessions.Session.get",
     mocks.mocked_success_repository_list_refs_response,
 )
 def test_repository_api_list_refs_force_refresh_return_ok(repository_service):
@@ -409,7 +409,7 @@ def test_repository_api_list_refs_force_refresh_return_ok(repository_service):
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.get",
+    "argocd.services.base.sessions.Session.get",
     mocks.mocked_failure_generic_response,
 )
 def test_repository_api_list_refs_return_non_ok(repository_service):
@@ -420,7 +420,7 @@ def test_repository_api_list_refs_return_non_ok(repository_service):
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.post",
+    "argocd.services.base.sessions.Session.post",
     mocks.mocked_success_repository_get_app_response,
 )
 def test_repository_api_get_app_return_ok(
@@ -437,7 +437,7 @@ def test_repository_api_get_app_return_ok(
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.post",
+    "argocd.services.base.sessions.Session.post",
     mocks.mocked_failure_generic_response,
 )
 def test_repository_api_get_app_return_non_ok(
@@ -452,7 +452,7 @@ def test_repository_api_get_app_return_non_ok(
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.post",
+    "argocd.services.base.sessions.Session.post",
     mocks.mocked_success_repository_delete_response,
 )
 def test_repository_api_validate_access_return_ok(repository_service):
@@ -462,7 +462,7 @@ def test_repository_api_validate_access_return_ok(repository_service):
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.post",
+    "argocd.services.base.sessions.Session.post",
     mocks.mocked_success_repository_delete_response,
 )
 def test_repository_api_validate_access_username_return_ok(repository_service):
@@ -474,7 +474,7 @@ def test_repository_api_validate_access_username_return_ok(repository_service):
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.post",
+    "argocd.services.base.sessions.Session.post",
     mocks.mocked_success_repository_delete_response,
 )
 def test_repository_api_validate_access_password_return_ok(repository_service):
@@ -486,7 +486,7 @@ def test_repository_api_validate_access_password_return_ok(repository_service):
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.post",
+    "argocd.services.base.sessions.Session.post",
     mocks.mocked_success_repository_delete_response,
 )
 def test_repository_api_validate_access_ssh_private_key_return_ok(repository_service):
@@ -498,7 +498,7 @@ def test_repository_api_validate_access_ssh_private_key_return_ok(repository_ser
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.post",
+    "argocd.services.base.sessions.Session.post",
     mocks.mocked_success_repository_delete_response,
 )
 def test_repository_api_validate_access_insecure_return_ok(repository_service):
@@ -508,7 +508,7 @@ def test_repository_api_validate_access_insecure_return_ok(repository_service):
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.post",
+    "argocd.services.base.sessions.Session.post",
     mocks.mocked_success_repository_delete_response,
 )
 def test_repository_api_validate_access_tls_client_cert_data_return_ok(
@@ -522,7 +522,7 @@ def test_repository_api_validate_access_tls_client_cert_data_return_ok(
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.post",
+    "argocd.services.base.sessions.Session.post",
     mocks.mocked_success_repository_delete_response,
 )
 def test_repository_api_validate_access_tls_client_cert_key_return_ok(
@@ -536,7 +536,7 @@ def test_repository_api_validate_access_tls_client_cert_key_return_ok(
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.post",
+    "argocd.services.base.sessions.Session.post",
     mocks.mocked_success_repository_delete_response,
 )
 def test_repository_api_validate_access_access_type_return_ok(repository_service):
@@ -548,7 +548,7 @@ def test_repository_api_validate_access_access_type_return_ok(repository_service
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.post",
+    "argocd.services.base.sessions.Session.post",
     mocks.mocked_success_repository_delete_response,
 )
 def test_repository_api_validate_access_name_return_ok(repository_service):
@@ -558,7 +558,7 @@ def test_repository_api_validate_access_name_return_ok(repository_service):
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.post",
+    "argocd.services.base.sessions.Session.post",
     mocks.mocked_success_repository_delete_response,
 )
 def test_repository_api_validate_access_enable_oci_return_ok(
@@ -570,7 +570,7 @@ def test_repository_api_validate_access_enable_oci_return_ok(
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.post",
+    "argocd.services.base.sessions.Session.post",
     mocks.mocked_success_repository_delete_response,
 )
 def test_repository_api_validate_access_github_app_private_key_return_ok(
@@ -584,7 +584,7 @@ def test_repository_api_validate_access_github_app_private_key_return_ok(
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.post",
+    "argocd.services.base.sessions.Session.post",
     mocks.mocked_success_repository_delete_response,
 )
 def test_repository_api_validate_access_github_app_id_return_ok(
@@ -598,7 +598,7 @@ def test_repository_api_validate_access_github_app_id_return_ok(
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.post",
+    "argocd.services.base.sessions.Session.post",
     mocks.mocked_success_repository_delete_response,
 )
 def test_repository_api_validate_access_github_app_installation_id_return_ok(
@@ -613,7 +613,7 @@ def test_repository_api_validate_access_github_app_installation_id_return_ok(
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.post",
+    "argocd.services.base.sessions.Session.post",
     mocks.mocked_success_repository_delete_response,
 )
 def test_repository_api_validate_access_github_app_enterprise_base_url_return_ok(
@@ -628,7 +628,7 @@ def test_repository_api_validate_access_github_app_enterprise_base_url_return_ok
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.post",
+    "argocd.services.base.sessions.Session.post",
     mocks.mocked_success_repository_delete_response,
 )
 def test_repository_api_validate_access_proxy_return_ok(repository_service):
@@ -640,7 +640,7 @@ def test_repository_api_validate_access_proxy_return_ok(repository_service):
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.post",
+    "argocd.services.base.sessions.Session.post",
     mocks.mocked_success_repository_delete_response,
 )
 def test_repository_api_validate_access_project_return_ok(
@@ -654,7 +654,7 @@ def test_repository_api_validate_access_project_return_ok(
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.post",
+    "argocd.services.base.sessions.Session.post",
     mocks.mocked_failure_generic_response,
 )
 def test_repository_api_validate_access_return_non_ok(repository_service):
