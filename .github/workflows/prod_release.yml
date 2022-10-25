@@ -19,6 +19,10 @@ jobs:
     - name: Build package
       run: |
         python -m build
+    - name: Integration test
+      run: |
+        pip install dist/*.whl
+        pytest --no-cov-on-fail --cov argocd --cov-report html --cov-report term --cov-report xml tests/integration
     - name: Publish the package with twine
       run: |
         twine upload --repository pypi --username ${{ secrets.PYPI_API_USER }} --password ${{ secrets.PYPI_API_TOKEN }} dist/*
