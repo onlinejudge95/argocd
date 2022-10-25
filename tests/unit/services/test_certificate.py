@@ -37,7 +37,7 @@ def certificate_service_create_payload():
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.get",
+    "argocd.services.certificate.sessions.Session.get",
     mocks.mocked_success_certificate_response,
 )
 def test_repository_certificate_api_list_returns_ok(certificate_service):
@@ -51,7 +51,7 @@ def test_repository_certificate_api_list_returns_ok(certificate_service):
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.get",
+    "argocd.services.certificate.sessions.Session.get",
     mocks.mocked_success_certificate_response,
 )
 def test_repository_certificate_api_list_host_name_pattern_returns_ok(
@@ -67,7 +67,7 @@ def test_repository_certificate_api_list_host_name_pattern_returns_ok(
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.get",
+    "argocd.services.certificate.sessions.Session.get",
     mocks.mocked_success_certificate_response,
 )
 def test_repository_certificate_api_list_cert_type_returns_ok(
@@ -83,7 +83,7 @@ def test_repository_certificate_api_list_cert_type_returns_ok(
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.get",
+    "argocd.services.certificate.sessions.Session.get",
     mocks.mocked_success_certificate_response,
 )
 def test_repository_certificate_api_list_cert_sub_type_returns_ok(
@@ -99,7 +99,7 @@ def test_repository_certificate_api_list_cert_sub_type_returns_ok(
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.get",
+    "argocd.services.certificate.sessions.Session.get",
     mocks.mocked_failure_generic_response,
 )
 def test_repository_certificate_api_list_returns_not_ok(certificate_service):
@@ -110,7 +110,7 @@ def test_repository_certificate_api_list_returns_not_ok(certificate_service):
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.post",
+    "argocd.services.certificate.sessions.Session.post",
     mocks.mocked_success_certificate_response,
 )
 def test_repository_certificate_api_create_returns_ok(
@@ -126,7 +126,7 @@ def test_repository_certificate_api_create_returns_ok(
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.post",
+    "argocd.services.certificate.sessions.Session.post",
     mocks.mocked_success_certificate_response,
 )
 def test_repository_certificate_api_create_upsert_returns_ok(
@@ -144,7 +144,7 @@ def test_repository_certificate_api_create_upsert_returns_ok(
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.post",
+    "argocd.services.certificate.sessions.Session.post",
     mocks.mocked_failure_generic_response,
 )
 def test_repository_certificate_api_create_returns_not_ok(
@@ -157,7 +157,7 @@ def test_repository_certificate_api_create_returns_not_ok(
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.delete",
+    "argocd.services.certificate.sessions.Session.delete",
     mocks.mocked_success_certificate_response,
 )
 def test_repository_certificate_api_delete_returns_ok(certificate_service):
@@ -171,7 +171,7 @@ def test_repository_certificate_api_delete_returns_ok(certificate_service):
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.delete",
+    "argocd.services.certificate.sessions.Session.delete",
     mocks.mocked_success_certificate_response,
 )
 def test_repository_certificate_api_delete_host_name_pattern_returns_ok(
@@ -187,7 +187,7 @@ def test_repository_certificate_api_delete_host_name_pattern_returns_ok(
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.delete",
+    "argocd.services.certificate.sessions.Session.delete",
     mocks.mocked_success_certificate_response,
 )
 def test_repository_certificate_api_delete_cert_type_returns_ok(certificate_service):
@@ -201,7 +201,7 @@ def test_repository_certificate_api_delete_cert_type_returns_ok(certificate_serv
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.delete",
+    "argocd.services.certificate.sessions.Session.delete",
     mocks.mocked_success_certificate_response,
 )
 def test_repository_certificate_api_delete_cert_sub_type_returns_ok(
@@ -217,7 +217,7 @@ def test_repository_certificate_api_delete_cert_sub_type_returns_ok(
 
 
 @unittest.mock.patch(
-    "argocd.services.repository.sessions.Session.delete",
+    "argocd.services.certificate.sessions.Session.delete",
     mocks.mocked_failure_generic_response,
 )
 def test_repository_certificate_api_delete_returns_not_ok(certificate_service):
