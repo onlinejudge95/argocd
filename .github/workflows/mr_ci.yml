@@ -34,8 +34,8 @@ jobs:
     - name: Lint Step
       run: |
         black --check --target-version py310 .
-        isort --check --profile black --skip env .
-        flake8 --count --show-source --statistics --exclude .git,env,__init__.py --max-line-length 88 .
+        isort --check --profile black --skip build_env --skip test_env .
+        flake8 --count --show-source --statistics --exclude .git,build_env,test_env,__init__.py --max-line-length 88 .
     - name: Coverage with pytest
       run: |
         pytest --no-cov-on-fail --cov argocd --cov-report html --cov-report term --cov-report xml tests/unit
